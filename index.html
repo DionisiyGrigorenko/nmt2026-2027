@@ -20,10 +20,11 @@
                 <div class="bg-indigo-700 px-2.5 py-1 rounded-md font-bold text-sm">УЛ №3</div>
                 <div>
                     <h1 class="text-sm font-bold leading-tight">Уманський ліцей № 3</h1>
-                    <p class="text-[11px] text-indigo-200">Пробне НМТ — Тестові завдання</p>
+                    <p class="text-[11px] text-indigo-200">Пробне НМТ — Освітній хаб</p>
                 </div>
             </div>
             <nav class="flex flex-wrap gap-5 text-sm font-medium items-center">
+                <a href="#instruction" class="hover:text-indigo-300 transition">Інструкція</a>
                 <a href="#subjects" class="hover:text-indigo-300 transition">Предмети</a>
                 <a href="#about-page" class="hover:text-indigo-300 transition font-semibold text-teal-300">Про НМТ</a>
             </nav>
@@ -33,9 +34,9 @@
     <!-- Головний банер -->
     <section class="bg-gradient-to-r from-emerald-800 to-teal-950 text-white py-14 px-4">
         <div class="max-w-4xl mx-auto text-center">
-            <span class="bg-teal-700/80 text-teal-200 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">Тестові завдання УЛ № 3</span>
-            <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-4">Пробне НМТ: оберіть предмет для тестування</h2>
-            <p class="text-teal-100 text-base md:text-lg mb-6 max-w-2xl mx-auto">Оберіть потрібний предмет нижче та натисніть «Пройти тест», щоб розпочати виконання завдань.</p>
+            <span class="bg-teal-700/80 text-teal-200 text-xs font-semibold px-3.5 py-1.5 rounded-full uppercase tracking-wider">Платформа підготовки УЛ № 3</span>
+            <h2 class="text-3xl md:text-5xl font-bold mt-4 mb-4">Пробне НМТ: Стартовий майданчик</h2>
+            <p class="text-teal-100 text-base md:text-lg mb-6 max-w-2xl mx-auto">Ознайомтеся з інструкцією нижче, оберіть потрібний предмет та почніть тренування з автоматичним контролем часу.</p>
             
             <!-- Кнопка примусового завершення сесії -->
             <div id="active-session-controls" class="hidden justify-center items-center gap-4">
@@ -69,168 +70,233 @@
         </div>
     </div>
 
-    <!-- Основний контент: Предмети у 3 колонки з PNG-іконками -->
-    <main class="max-w-7xl mx-auto px-4 py-12 space-y-12">
+    <!-- Основний контент -->
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
 
-        <!-- Блок: Предмети та тести (3 колонки) -->
-        <section id="subjects" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <!-- Картка 1: Українська мова -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+        <!-- БЛОК 1: Покрокова інструкція проходження -->
+        <section id="instruction" class="bg-white rounded-2xl shadow-md border border-slate-200 p-8 md:p-10">
+            <div class="flex items-center space-x-3 mb-6 border-b border-slate-100 pb-4">
+                <img src="https://img.icons8.com/color/96/todo-list.png" alt="Інструкція" class="w-10 h-10 object-contain">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Обов'язковий</span>
-                        <img src="https://img.icons8.com/color/96/dictionary.png" alt="Українська мова" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Українська мова</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">30 завдань (25 вибір відповіді, 5 встановлення відповідності). Максимум: 45 балів (поріг — 7 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/ADxTBievSuUGXW1v6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
+                    <h3 class="text-2xl font-bold text-indigo-900">Як проходити тестування на платформі</h3>
+                    <p class="text-sm text-slate-500">Покроковий алгоритм для учнів 10–11 класів Уманського ліцею № 3</p>
                 </div>
             </div>
 
-            <!-- Картка 2: Математика -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Обов'язковий</span>
-                        <img src="https://img.icons8.com/color/96/calculator.png" alt="Математика" class="w-12 h-12 object-contain">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 text-slate-700">
+                <!-- Крок 1 -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-8 h-8 bg-indigo-700 text-white font-bold rounded-lg flex items-center justify-center text-sm mb-3">1</div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Правила та формат</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Ознайомтесь із регламентом тестування (4 предмети, 240 хвилин) у блоці «Про НМТ».</p>
                     </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Математика</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">22 завдання (вибір відповіді, відповідність, коротка відкрита відповідь). Максимум: 32 бали (поріг — 5 балів).</p>
                 </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/yHfQY6J3gTruZSYK8" target="_blank" onclick="triggerTestStart()" class="block text-center bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
+
+                <!-- Крок 2 -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-8 h-8 bg-indigo-700 text-white font-bold rounded-lg flex items-center justify-center text-sm mb-3">2</div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Вибір предмета</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Оберіть потрібну дисципліну серед обов'язкових або предметів на вибір.</p>
+                    </div>
+                </div>
+
+                <!-- Крок 3 -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-8 h-8 bg-indigo-700 text-white font-bold rounded-lg flex items-center justify-center text-sm mb-3">3</div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Старт тесту</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Натисніть «Пройти тест ➔». Таймер у кутку екрана запуститься **автоматично**.</p>
+                    </div>
+                </div>
+
+                <!-- Крок 4 -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-8 h-8 bg-indigo-700 text-white font-bold rounded-lg flex items-center justify-center text-sm mb-3">4</div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Виконання завдань</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Дайте відповіді на всі запитання у формі тесту, слідкуючи за часом у віконці.</p>
+                    </div>
+                </div>
+
+                <!-- Крок 5 -->
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="w-8 h-8 bg-emerald-600 text-white font-bold rounded-lg flex items-center justify-center text-sm mb-3">5</div>
+                        <h4 class="font-bold text-slate-900 text-base mb-2">Фіксація часу</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Поверніться на сайт і натисніть «⏹ Завершити тестування», щоб переглянути свій результат.</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Картка 3: Історія України -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Обов'язковий</span>
-                        <img src="https://img.icons8.com/color/96/museum.png" alt="Історія України" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Історія України</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">30 завдань (друга половина XVI – початок XXI ст.). Максимум: 54 бали (поріг — 8 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://sites.google.com/view/nmtlyceum3uman/ist" target="_blank" onclick="triggerTestStart()" class="block text-center bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
-            <!-- Картка 4: Англійська мова -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
-                        <img src="https://img.icons8.com/color/96/usa.png" alt="Англійська мова" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Англійська мова</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">32 завдання (відповідність, вибір відповіді, пропуски). Максимум: 32 бали (поріг — 5 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/TqJJFBSiTK3rmf5H7" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
-            <!-- Картка 5: Географія -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
-                        <img src="https://img.icons8.com/color/96/globe.png" alt="Географія" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Географія</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, коротка відповідь, вибір трьох із семи). Максимум: 46 балів (поріг — 7 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/kjB6RaK5CBDekPBS6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
-            <!-- Картка 6: Хімія -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
-                        <img src="https://img.icons8.com/color/96/flask.png" alt="Хімія" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Хімія</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, відповідність, коротка відкрита відповідь). Максимум: 40 балів (поріг — 6 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="#" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
-            <!-- Картка 7: Українська література -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
-                        <img src="https://img.icons8.com/color/96/literature.png" alt="Українська література" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Українська література</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, встановлення відповідності). Максимум: 45 балів (поріг — 7 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/rv1QVHXPUSrwtqkn6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
-            <!-- Картка 8: Біологія -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
-                        <img src="https://img.icons8.com/color/96/dna-helix.png" alt="Біологія" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Біологія</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, відповідність, вибір трьох із трьох груп). Максимум: 46 балів (поріг — 7 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/cKRS3munwUJetv626" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
-            <!-- Картка 9: Фізика -->
-            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
-                        <img src="https://img.icons8.com/color/96/physics.png" alt="Фізика" class="w-12 h-12 object-contain">
-                    </div>
-                    <h4 class="font-bold text-slate-900 text-xl mb-2">Фізика</h4>
-                    <p class="text-sm text-slate-600 leading-relaxed">20 завдань (вибір відповіді, відповідність, коротка відкрита відповідь). Максимум: 32 бали (поріг — 5 балів).</p>
-                </div>
-                <div class="mt-6 pt-4 border-t border-slate-100">
-                    <a href="https://forms.gle/atT2EH5fNrvXdYDK6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
-                        Пройти тест ➔
-                    </a>
-                </div>
-            </div>
-
         </section>
 
-        <!-- Сторінка / блок: Про НМТ -->
+        <!-- БЛОК 2: Предмети та тести (3 колонки з PNG-іконками) -->
+        <section id="subjects" class="space-y-6">
+            <div class="border-l-4 border-indigo-700 pl-3">
+                <h3 class="text-2xl font-bold text-indigo-900">Оберіть предмет для тестування</h3>
+                <p class="text-sm text-slate-600">Натисніть на кнопку під предметом, щоб розпочати складання</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Картка 1: Українська мова -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Обов'язковий</span>
+                            <img src="https://img.icons8.com/color/96/dictionary.png" alt="Українська мова" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Українська мова</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">30 завдань (25 вибір відповіді, 5 встановлення відповідності). Максимум: 45 балів (поріг — 7 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/ADxTBievSuUGXW1v6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 2: Математика -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Обов'язковий</span>
+                            <img src="https://img.icons8.com/color/96/calculator.png" alt="Математика" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Математика</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">22 завдання (вибір відповіді, відповідність, коротка відкрита відповідь). Максимум: 32 бали (поріг — 5 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/yHfQY6J3gTruZSYK8" target="_blank" onclick="triggerTestStart()" class="block text-center bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 3: Історія України -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Обов'язковий</span>
+                            <img src="https://img.icons8.com/color/96/museum.png" alt="Історія України" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Історія України</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">30 завдань (друга половина XVI – початок XXI ст.). Максимум: 54 бали (поріг — 8 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://sites.google.com/view/nmtlyceum3uman/ist" target="_blank" onclick="triggerTestStart()" class="block text-center bg-indigo-700 hover:bg-indigo-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 4: Англійська мова -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
+                            <img src="https://img.icons8.com/color/96/usa.png" alt="Англійська мова" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Англійська мова</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">32 завдання (відповідність, вибір відповіді, пропуски). Максимум: 32 бали (поріг — 5 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/TqJJFBSiTK3rmf5H7" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 5: Географія -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
+                            <img src="https://img.icons8.com/color/96/globe.png" alt="Географія" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Географія</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, коротка відповідь, вибір трьох із семи). Максимум: 46 балів (поріг — 7 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/kjB6RaK5CBDekPBS6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 6: Хімія -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
+                            <img src="https://img.icons8.com/color/96/flask.png" alt="Хімія" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Хімія</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, відповідність, коротка відкрита відповідь). Максимум: 40 балів (поріг — 6 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="#" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 7: Українська література -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
+                            <img src="https://img.icons8.com/color/96/literature.png" alt="Українська література" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Українська література</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, встановлення відповідності). Максимум: 45 балів (поріг — 7 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/rv1QVHXPUSrwtqkn6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 8: Біологія -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
+                            <img src="https://img.icons8.com/color/96/dna-helix.png" alt="Біологія" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Біологія</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">30 завдань (вибір відповіді, відповідність, вибір трьох із трьох груп). Максимум: 46 балів (поріг — 7 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/cKRS3munwUJetv626" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Картка 9: Фізика -->
+                <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col justify-between transition hover:shadow-lg">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="bg-teal-800 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">На вибір</span>
+                            <img src="https://img.icons8.com/color/96/physics.png" alt="Фізика" class="w-12 h-12 object-contain">
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-xl mb-2">Фізика</h4>
+                        <p class="text-sm text-slate-600 leading-relaxed">20 завдань (вибір відповіді, відповідність, коротка відкрита відповідь). Максимум: 32 бали (поріг — 5 балів).</p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <a href="https://forms.gle/atT2EH5fNrvXdYDK6" target="_blank" onclick="triggerTestStart()" class="block text-center bg-teal-700 hover:bg-teal-800 text-white font-semibold py-3 px-4 rounded-xl text-base transition shadow-sm">
+                            Пройти тест ➔
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- БЛОК 3: Про НМТ -->
         <section id="about-page" class="bg-white rounded-2xl shadow-md p-8 md:p-10 border border-slate-100 flex flex-col md:flex-row items-center gap-8">
             <div class="w-full md:w-1/4 flex justify-center">
                 <img src="https://img.icons8.com/color/96/exam.png" alt="НМТ" class="w-24 h-24 object-contain">
