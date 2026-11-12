@@ -20,6 +20,7 @@
             display: flex !important;
             flex-direction: column !important;
             position: relative !important;
+            background-color: #ffffff !important;
         }
         #test-container:fullscreen #test-wrapper {
             flex: 1 1 auto !important;
@@ -53,7 +54,7 @@
                 </div>
                 <div class="flex items-start space-x-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                     <span class="w-7 h-7 bg-indigo-700 text-white font-bold rounded-xl flex items-center justify-center text-xs shrink-0 mt-0.5">3</span>
-                    <p><strong class="text-slate-900">Автоматичний старт:</strong> При натисканні тест розгортається на повний екран. Якщо ви випадково вийшли через Esc, скористайтеся кнопкою «На весь екран» зверху.</p>
+                    <p><strong class="text-slate-900">Повноекранний режим:</strong> Тест розгортається автоматично. Ви можете керувати режимом за допомогою кнопки зверху або клавіші Esc.</p>
                 </div>
                 <div class="flex items-start space-x-3 bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
                     <span class="w-7 h-7 bg-indigo-700 text-white font-bold rounded-xl flex items-center justify-center text-xs shrink-0 mt-0.5">4</span>
@@ -61,7 +62,7 @@
                 </div>
                 <div class="flex items-start space-x-3 bg-emerald-50 p-3.5 rounded-2xl border border-emerald-100">
                     <span class="w-7 h-7 bg-emerald-600 text-white font-bold rounded-xl flex items-center justify-center text-xs shrink-0 mt-0.5">5</span>
-                    <p><strong class="text-slate-900">Фіксація:</strong> Після завершення натисніть кнопку «Завершити тестування», підтвердьте дію та перегляньте результат.</p>
+                    <p><strong class="text-slate-900">Фіксація:</strong> Після завершення натисніть кнопку «Завершити», підтвердьте дію та перегляньте результат.</p>
                 </div>
             </div>
 
@@ -142,8 +143,8 @@
                     <h3 id="active-subject-title" class="font-bold text-lg">Назва предмета</h3>
                 </div>
                 <div class="flex items-center space-x-2 sm:space-x-3">
-                    <!-- Кнопка повернення на повний екран, якщо натиснули Esc -->
-                    <button onclick="requestFullScreenMode()" class="bg-indigo-800 hover:bg-indigo-700 text-indigo-100 font-semibold px-3 py-2 rounded-lg text-xs sm:text-sm border border-indigo-700 transition flex items-center gap-1.5">
+                    <!-- Кнопка перемикання повноекранного режиму -->
+                    <button id="fullscreen-btn" onclick="toggleFullScreen()" class="bg-indigo-800 hover:bg-indigo-700 text-indigo-100 font-semibold px-3 py-2 rounded-lg text-xs sm:text-sm border border-indigo-700 transition flex items-center gap-1.5">
                         ⛶ На весь екран
                     </button>
                     <button onclick="requestEndSession()" class="bg-rose-600 hover:bg-rose-700 text-white font-bold px-4 sm:px-5 py-2 rounded-lg text-xs sm:text-sm transition">
@@ -379,18 +380,35 @@
             }
         }
 
-        function requestFullScreenMode() {
+        // Керування повноекранним режимом за допомогою кнопки (перемикач)
+        function toggleFullScreen() {
             const container = document.getElementById('test-container');
-            if (container.requestFullscreen) {
-                container.requestFullscreen().catch(err => {
-                    console.log("Fullscreen request info: ", err);
-                });
-            } else if (container.webkitRequestFullscreen) {
-                container.webkitRequestFullscreen();
-            } else if (container.msRequestFullscreen) {
-                container.msRequestFullscreen();
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen().catch(err => console.log(err));
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen().catch(err => console.log(err));
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
             }
         }
+
+        // Автоматичне оновлення тексту кнопки залежно від стану екрана
+        document.addEventListener('fullscreenchange', () => {
+            const btn = document.getElementById('fullscreen-btn');
+            if (document.fullscreenElement) {
+                btn.innerHTML = '🗗 Згорнути вікно';
+            } else {
+                btn.innerHTML = '⛶ На весь екран';
+            }
+        });
 
         function triggerTestStart() {
             if (!isStarted) {
@@ -419,7 +437,13 @@
             
             container.scrollIntoView({ behavior: 'smooth' });
             setTimeout(() => {
-                requestFullScreenMode();
+                if (!document.fullscreenElement) {
+                    if (container.requestFullscreen) {
+                        container.requestFullscreen().catch(err => console.log(err));
+                    } else if (container.webkitRequestFullscreen) {
+                        container.webkitRequestFullscreen();
+                    }
+                }
             }, 100);
 
             if (!isStarted) {
@@ -446,10 +470,13 @@
         }
 
         function confirmEndSession() {
+            // Обов'язковий вихід із повноекранного режиму при завершенні тесту
             if (document.fullscreenElement) {
                 document.exitFullscreen().catch(err => console.log(err));
             } else if (document.webkitExitFullscreen) {
                 document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
             }
 
             toggleModal('confirm-modal', false);
