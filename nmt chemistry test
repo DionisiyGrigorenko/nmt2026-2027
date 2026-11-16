@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>НМТ: Хімія — Тренажер УЦОЯО (Варіант 1 та Варіант 2)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .nmt-tab-active { background-color: #1d4ed8; color: #ffffff; border-color: #1d4ed8; }
+        .nmt-tab-answered { background-color: #dbeafe; color: #1e40af; border-color: #93c5fd; }
+        .nmt-radio-box:has(input:checked) { background-color: #eff6ff; border-color: #2563eb; }
+        .matrix-cell:has(input:checked) { background-color: #2563eb; color: white; border-color: #2563eb; }
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col select-none">
+
+    <!-- СТАРТОВИЙ ЕКРАН ВИБОРУ ВАРІАНТУ -->
+    <div id="start-screen" class="min-h-screen flex flex-col justify-between bg-slate-100">
+        <header class="bg-slate-900 text-white py-4 px-6 border-b border-slate-700 shadow-sm">
+            <div class="max-w-5xl mx-auto flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">НМТ УЛ № 3</span>
+                    <span class="font-bold text-lg tracking-tight">Пробне НМТ Уманський ліцей № 3</span>
+                </div>
+                <span class="text-xs text-slate-400 hidden sm:inline">Предмет: Хімія</span>
+            </div>
+        </header>
+
+        <main class="max-w-4xl mx-auto px-4 py-12 w-full flex-grow flex flex-col justify-center">
+            <div class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 sm:p-10 text-center space-y-6">
+                <div class="inline-flex items-center space-x-2 bg-blue-50 text-blue-800 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide">
+                    <span>Національний мультипредметний тест</span>
+                </div>
+                
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Тестування з хімії (2 варіанти)
+                </h1>
+                
+                <p class="text-slate-600 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+                    Оберіть варіант для проходження тестування. Інтерфейс, структура завдань, час виконання та нарахування балів відповідають формату НМТ.
+                </p>
+
+                <!-- Інфо-блок про структуру балів -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto text-left bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs sm:text-sm">
+                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                        <div class="font-bold text-blue-700">Завдання 1–13</div>
+                        <div class="text-slate-600 mt-0.5">Вибір 1 відповіді • <strong>по 1 балу</strong> (13 б.)</div>
+                    </div>
+                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                        <div class="font-bold text-blue-700">Завдання 14–16</div>
+                        <div class="text-slate-600 mt-0.5">Логічні пари • <strong>по 3 бали</strong> (9 б.)</div>
+                    </div>
+                    <div class="p-2.5 bg-white rounded-lg border border-slate-200">
+                        <div class="font-bold text-blue-700">Завдання 17–20</div>
+                        <div class="text-slate-600 mt-0.5">Числова відповідь • <strong>по 2 бали</strong> (8 б.)</div>
+                    </div>
+                </div>
+
+                <!-- Картки вибору варіанту -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto pt-4">
+                    <div class="bg-slate-50 hover:bg-blue-50/60 border-2 border-slate-200 hover:border-blue-600 rounded-2xl p-6 transition flex flex-col justify-between text-left group">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-slate-900 group-hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-md transition">ВАРІАНТ 1</span>
+                                <span class="text-xs font-semibold text-slate-500">20 завдань • 30 балів</span>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900 mb-2">Перший варіант тесту</h2>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                Класи неорганічних сполук, гідроліз, хімічна рівновага, ізомерія та розрахунки за діаграмою газової суміші.
+                            </p>
+                        </div>
+                        <button type="button" onclick="startVariant(1)" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition cursor-pointer">
+                            Розпочати Варіант 1 →
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-50 hover:bg-blue-50/60 border-2 border-slate-200 hover:border-blue-600 rounded-2xl p-6 transition flex flex-col justify-between text-left group">
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-slate-900 group-hover:bg-blue-700 text-white text-xs font-bold px-3 py-1 rounded-md transition">ВАРІАНТ 2</span>
+                                <span class="text-xs font-semibold text-slate-500">20 завдань • 30 балів</span>
+                            </div>
+                            <h2 class="text-lg font-bold text-slate-900 mb-2">Другий варіант тесту</h2>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-6">
+                                Будова атома, кристалічні ґратки, якісні реакції на йони, органічні сполуки та розрахунки за кривою розчинності.
+                            </p>
+                        </div>
+                        <button type="button" onclick="startVariant(2)" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition cursor-pointer">
+                            Розпочати Варіант 2 →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-center text-xs text-slate-400 py-4">
+            Час виконання кожного варіанту: 60 хвилин • Шкала оцінювання 100–200 балів
+        </footer>
+    </div>
+
+    <!-- РОБОЧИЙ ЕКРАН ТЕСТУВАННЯ (Прихований до вибору варіанту) -->
+    <div id="test-screen" class="hidden flex-col min-h-screen">
+        <!-- Верхня панель НМТ -->
+        <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50 border-b border-slate-700">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-3">
+                <div class="flex items-center space-x-3">
+                    <button type="button" onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold px-2.5 py-1.5 rounded border border-slate-600 transition cursor-pointer" title="Повернутися до вибору варіанту">
+                        ← Варіанти
+                    </button>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">НМТ УЛ № 3 </span>
+                    <h1 id="header-variant-title" class="text-base sm:text-lg font-bold tracking-tight">Хімія (Варіант 1)</h1>
+                </div>
+                
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <div class="hidden md:flex items-center space-x-2 text-xs text-slate-300 bg-slate-800 px-3 py-1.5 rounded-md border border-slate-700">
+                        <span>Макс. балів: <strong class="text-white">30</strong></span>
+                        <span>•</span>
+                        <span>Завдань: <strong class="text-white">20</strong></span>
+                    </div>
+                    <div class="flex items-center space-x-2 bg-slate-800 px-3.5 py-1.5 rounded-md border border-slate-700">
+                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <span id="timer" class="font-mono text-base font-bold text-white">60:00</span>
+                    </div>
+                    <button type="button" id="finish-top-btn" class="bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold px-4 py-1.5 rounded-md transition cursor-pointer shadow">
+                        Завершити тест
+                    </button>
+                </div>
+            </div>
+
+            <!-- Навігаційна панель номерів завдань -->
+            <div class="bg-white border-b border-slate-200 py-2.5 px-4 shadow-xs">
+                <div class="max-w-6xl mx-auto flex flex-wrap items-center gap-1.5" id="nav-grid"></div>
+            </div>
+        </header>
+
+        <!-- Основна робоча область -->
+        <main class="max-w-5xl mx-auto px-4 py-6 flex-grow w-full">
+            
+            <!-- Підказка щодо нарахування балів -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-3.5 mb-6 text-xs sm:text-sm text-blue-900 flex flex-wrap justify-between items-center gap-2">
+                <div>
+                    <strong>Система оцінювання НМТ:</strong> 
+                    №1–13 — по <strong>1 балу</strong> (вибір 1 відповіді) | 
+                    №14–16 — по <strong>3 бали</strong> (відповідність, 1 бал за рядок) | 
+                    №17–20 — по <strong>2 бали</strong> (коротка числова відповідь).
+                </div>
+                <button type="button" id="toggle-ref-btn" class="text-blue-700 underline font-semibold hover:text-blue-900 cursor-pointer">
+                    Довідкові матеріали (Відносні атомні маси)
+                </button>
+            </div>
+
+            <!-- Блок довідкових матеріалів -->
+            <div id="ref-materials" class="hidden bg-white border border-slate-300 rounded-xl p-4 mb-6 shadow-sm">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-bold text-slate-800 text-sm">Довідкові дані для розрахунків (округлені відносні атомні маси):</h3>
+                    <button type="button" onclick="document.getElementById('ref-materials').classList.add('hidden')" class="text-slate-400 hover:text-slate-700 text-sm font-bold cursor-pointer">✕ Закрити</button>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed font-mono bg-slate-50 p-3 rounded border border-slate-200">
+                    H = 1 | C = 12 | N = 14 | O = 16 | Na = 23 | Mg = 24 | Al = 27 | Si = 28 | P = 31 | S = 32 | Cl = 35,5 | K = 39 | Ca = 40 | Fe = 56 | Cu = 64 | Zn = 65 | Ag = 108 | I = 127 | Ba = 137
+                </p>
+            </div>
+
+            <form id="nmt-form" class="space-y-6">
+                <div id="questions-container" class="space-y-6"></div>
+
+                <!-- Нижня панель завершення -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4 mt-8">
+                    <div class="text-sm text-slate-600">
+                        Виконано завдань: <strong id="answered-count" class="text-slate-900">0</strong> з <strong>20</strong>
+                    </div>
+                    <button type="button" id="submit-btn" class="w-full sm:w-auto bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3.5 rounded-lg shadow transition cursor-pointer text-base">
+                        Завершити роботу та отримати результат НМТ
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <!-- Модальне вікно результатів у стилі УЦОЯО -->
+    <div id="results-modal" class="hidden fixed inset-0 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-6">
+            <div class="border-b border-slate-200 pb-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold text-slate-900">Результат тестування НМТ</h2>
+                <span id="modal-variant-badge" class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded">Хімія • Варіант 1</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 text-center">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 uppercase font-semibold">Тестовий бал</div>
+                    <div class="text-3xl font-extrabold text-blue-700 mt-1"><span id="raw-score">0</span> <span class="text-lg font-normal text-slate-400">/ 30</span></div>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 uppercase font-semibold">Рейтингова оцінка (100–200)</div>
+                    <div class="text-3xl font-extrabold text-emerald-600 mt-1" id="nmt-scaled-score">—</div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 text-xs sm:text-sm space-y-2 border border-slate-200">
+                <div class="flex justify-between">
+                    <span class="text-slate-600">Частина 1 (№1–13, по 1 балу):</span>
+                    <strong id="part1-score" class="text-slate-900">0 / 13</strong>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-600">Частина 2 (№14–16, по 3 бали):</span>
+                    <strong id="part2-score" class="text-slate-900">0 / 9</strong>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-600">Частина 3 (№17–20, по 2 бали):</span>
+                    <strong id="part3-score" class="text-slate-900">0 / 8</strong>
+                </div>
+            </div>
+
+            <p id="pass-status" class="text-sm text-center font-medium text-slate-700"></p>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button type="button" id="review-btn" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-lg transition cursor-pointer">
+                    Переглянути відповіді
+                </button>
+                <button type="button" onclick="returnToMenu()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold py-3 rounded-lg border border-slate-300 transition cursor-pointer">
+                    До вибору варіанту
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ПОВНА БАЗА ЗАВДАНЬ ОБОХ ВАРІАНТІВ З ДОКУМЕНТА КОРИСТУВАЧА
+        const variantsData = {
+            1: [
+                {
+                    id: 1, type: 'single', points: 1,
+                    text: 'Розгляньте реакцію та вкажіть, до якого класу належить речовина Х:<br><span class="font-mono bg-slate-100 px-2 py-0.5 rounded mt-1 inline-block">CaO + X → CaSO₄</span>',
+                    options: {
+                        'А': 'кислотних оксидів',
+                        'Б': 'амфотерних оксидів',
+                        'В': 'основних оксидів',
+                        'Г': 'амфотерних гідроксидів'
+                    },
+                    correct: 'А'
+                },
+                {
+                    id: 2, type: 'single', points: 1,
+                    text: 'Укажіть просту речовину:',
+                    options: {
+                        'А': 'Бензен',
+                        'Б': 'Бронза',
+                        'В': 'Бром',
+                        'Г': 'Вода'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 3, type: 'single', points: 1,
+                    text: 'Розгляньте схеми та вкажіть можливу речовину Х та Y:<br><span class="font-mono text-sm block mt-2 bg-slate-50 p-2.5 rounded border border-slate-200">Al³⁺ —(X)→ Al(OH)₃<br>Al(OH)₃ —(X)→ [Al(OH)₄]⁻<br>Al(OH)₃ —(Y)→ Al³⁺</span>',
+                    tableHtml: `
+                        <table class="w-full max-w-sm text-xs sm:text-sm border-collapse border border-slate-300 my-3 text-center">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="border border-slate-300 p-2 w-12"></th>
+                                    <th class="border border-slate-300 p-2">X</th>
+                                    <th class="border border-slate-300 p-2">Y</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="border border-slate-300 p-2 font-bold">А</td><td class="border border-slate-300 p-2 font-mono">H₂O</td><td class="border border-slate-300 p-2 font-mono">NaCl</td></tr>
+                                <tr><td class="border border-slate-300 p-2 font-bold">Б</td><td class="border border-slate-300 p-2 font-mono">KOH</td><td class="border border-slate-300 p-2 font-mono">HCl</td></tr>
+                                <tr><td class="border border-slate-300 p-2 font-bold">В</td><td class="border border-slate-300 p-2 font-mono">KOH</td><td class="border border-slate-300 p-2 font-mono">NaCl</td></tr>
+                                <tr><td class="border border-slate-300 p-2 font-bold">Г</td><td class="border border-slate-300 p-2 font-mono">H₂O</td><td class="border border-slate-300 p-2 font-mono">HCl</td></tr>
+                            </tbody>
+                        </table>
+                    `,
+                    options: {
+                        'А': 'X — H₂O, Y — NaCl',
+                        'Б': 'X — KOH, Y — HCl',
+                        'В': 'X — KOH, Y — NaCl',
+                        'Г': 'X — H₂O, Y — HCl'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 4, type: 'single', points: 1,
+                    text: 'Лід перетворили на рідку воду. Відомо, що густина льоду становить 0,92 г/см³, а густина води — 1,00 г/см³.<br>Яке з наведених тверджень є правильним?',
+                    options: {
+                        'А': 'Кількість водневих зв'язків між молекулами води збільшилася.',
+                        'Б': 'Кількість водневих зв'язків між молекулами води зменшилася.',
+                        'В': 'Маса зразка збільшилася.',
+                        'Г': 'Густина води стала меншою, ніж густина льоду.'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 5, type: 'single', points: 1,
+                    text: 'Укажіть правильне твердження щодо спостережень у склянках I та II:',
+                    svgIllustration: `
+                        <div class="my-3 p-3 bg-slate-50 border border-slate-200 rounded-lg max-w-md">
+                            <svg viewBox="0 0 360 190" class="w-full h-auto">
+                                <!-- Колба по центру -->
+                                <circle cx="180" cy="115" r="28" fill="#e0f2fe" stroke="#334155" stroke-width="2"/>
+                                <rect x="172" y="65" width="16" height="25" fill="#e0f2fe" stroke="#334155" stroke-width="2"/>
+                                <rect x="170" y="60" width="20" height="8" fill="#64748b"/>
+                                <!-- Спиртівка -->
+                                <path d="M168 175 L192 175 L188 158 L172 158 Z" fill="#cbd5e1" stroke="#334155" stroke-width="1.5"/>
+                                <path d="M180 144 Q186 152 180 157 Q174 152 180 144 Z" fill="#f97316"/>
+                                <text x="200" y="168" font-size="9" fill="#475569">слабке нагрівання</text>
+                                <!-- Підписи реагентів -->
+                                <text x="180" y="22" font-size="10" text-anchor="middle" font-weight="bold" fill="#0f172a">NaCl (крист.) + H₂SO₄ (конц.)</text>
+                                <!-- Газовідвідна трубка вліво (Склянка I) -->
+                                <polyline points="175,60 175,42 65,42 65,140" fill="none" stroke="#334155" stroke-width="2.5"/>
+                                <text x="115" y="36" font-size="10" font-weight="bold" fill="#0284c7">← HCl</text>
+                                <!-- Газовідвідна трубка вправо (Склянка II) -->
+                                <polyline points="185,60 185,42 295,42 295,140" fill="none" stroke="#334155" stroke-width="2.5"/>
+                                <text x="235" y="36" font-size="10" font-weight="bold" fill="#0284c7">HCl →</text>
+                                <!-- Склянка I -->
+                                <path d="M40 90 L40 165 Q40 170 45 170 L85 170 Q90 170 90 165 L90 90" fill="#f0f9ff" stroke="#334155" stroke-width="2"/>
+                                <rect x="41" y="110" width="48" height="59" fill="#bae6fd" opacity="0.6"/>
+                                <text x="30" y="105" font-size="12" font-weight="bold" fill="#0f172a">I</text>
+                                <text x="65" y="183" font-size="10" text-anchor="middle" font-weight="bold" fill="#0f172a">Na₂SiO₃</text>
+                                <!-- Склянка II -->
+                                <path d="M270 90 L270 165 Q270 170 275 170 L315 170 Q320 170 320 165 L320 90" fill="#f0f9ff" stroke="#334155" stroke-width="2"/>
+                                <rect x="271" y="110" width="48" height="59" fill="#bae6fd" opacity="0.6"/>
+                                <text x="326" y="105" font-size="12" font-weight="bold" fill="#0f172a">II</text>
+                                <text x="295" y="183" font-size="10" text-anchor="middle" font-weight="bold" fill="#0f172a">AgNO₃</text>
+                            </svg>
+                        </div>
+                    `,
+                    options: {
+                        'А': 'у склянці I виділяється газ, у склянці II утворюється осад',
+                        'Б': 'у склянці I утворюється осад, у склянці II виділяється газ',
+                        'В': 'у жодній склянці зміни не відбуваються',
+                        'Г': 'в обох склянках утворюється осад'
+                    },
+                    correct: 'Г'
+                },
+                {
+                    id: 6, type: 'single', points: 1,
+                    text: 'Вказати правильне твердження, якщо дана оборотна реакція утворення аміаку:<br><span class="font-mono bg-slate-100 px-2 py-0.5 rounded mt-1 inline-block">N₂ + 3H₂ ⇄ 2NH₃, ΔH = −92 кДж</span>',
+                    options: {
+                        'А': 'За підвищення температури збільшиться вихід аміаку',
+                        'Б': 'За підвищення тиску зменшиться вихід аміаку',
+                        'В': 'Реакція утворення аміаку — ендотермічна',
+                        'Г': 'Швидкість прямої реакції дорівнює швидкості зворотної реакції (у стані рівноваги)'
+                    },
+                    correct: 'Г'
+                },
+                {
+                    id: 7, type: 'single', points: 1,
+                    text: 'Укажіть пару речовин, між якими хімічна реакція НЕ ВІДБУВАЄТЬСЯ:',
+                    options: {
+                        'А': 'CuO і HNO₃',
+                        'Б': 'CuO і HCl',
+                        'В': 'Cu і HCl',
+                        'Г': 'Cu і HNO₃'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 8, type: 'single', points: 1,
+                    text: 'Укажіть рядок, у якому обидва алкани є структурними ізомерами н-гексану:',
+                    options: {
+                        'А': '2-метилпентан, 2-метилбутан',
+                        'Б': '3-метилпентан, 2,3-диметилбутан',
+                        'В': '2,2-диметилбутан, 2,2-диметилпропан',
+                        'Г': 'н-пентан, 2,3-диметилбутан'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 9, type: 'single', points: 1,
+                    text: 'Унаслідок лужного гідролізу естеру, молекулярна формула якого C₄H₈O₂, утворився етанол. Укажіть назву солі, що є другим продуктом цієї реакції:',
+                    options: {
+                        'А': 'метаноат',
+                        'Б': 'етаноат',
+                        'В': 'пропаноат',
+                        'Г': 'бутаноат'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 10, type: 'single', points: 1,
+                    text: 'Унаслідок гідратації алкену утворилася органічна сполука. Укажіть можливу молекулярну формулу цього продукту реакції:',
+                    options: {
+                        'А': 'C₅H₁₀O₂',
+                        'Б': 'C₅H₁₂O',
+                        'В': 'C₅H₁₀O',
+                        'Г': 'C₅H₈O₂'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 11, type: 'single', points: 1,
+                    text: 'Бензен реагував з речовинами Х та Y до утворення циклогексану та хлорбензену відповідно. Назвати типи реакцій:',
+                    options: {
+                        'А': 'Приєднання; заміщення',
+                        'Б': 'Відщеплення; заміщення',
+                        'В': 'Приєднання; відщеплення',
+                        'Г': 'Заміщення; обміну'
+                    },
+                    correct: 'А'
+                },
+                {
+                    id: 12, type: 'single', points: 1,
+                    text: 'Виберіть правильне твердження стосовно C та Si:',
+                    options: {
+                        'А': 'Атом Карбону має більший радіус, ніж атом Силіцію',
+                        'Б': 'Обидва елементи здатні утворювати сполуки формулою ЕH₄',
+                        'В': 'Карбон може виявляти нижчий ступінь окиснення, ніж Силіцій',
+                        'Г': 'Електронегативність Силіцію вища за Карбону'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 13, type: 'single', points: 1,
+                    text: 'За печії (відчуття печіння через надлишок хлоридної кислоти в шлунковому соку) людина випила водний розчин речовини, після чого стан покращився. Позначте формулу цієї речовини.',
+                    options: {
+                        'А': 'NaOH',
+                        'Б': 'NaNO₃',
+                        'В': 'NaHCO₃',
+                        'Г': 'Na₂SO₄'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 14, type: 'match', points: 3,
+                    text: 'Установіть відповідність між назвою сполуки (1–3) та хімічним процесом, унаслідок якого її можна добути (А–Д):',
+                    leftTitle: 'Назва сполуки:',
+                    leftItems: {
+                        '1': 'Бензен',
+                        '2': 'Анілін',
+                        '3': 'Етанол'
+                    },
+                    rightTitle: 'Хімічний процес:',
+                    rightItems: {
+                        'А': 'Відновлення нітробензену',
+                        'Б': 'Тримеризація ацетилену',
+                        'В': 'Гідратація етену',
+                        'Г': 'Окиснення пропанолу-2',
+                        'Д': 'Гідрування етену'
+                    },
+                    correct: { '1': 'Б', '2': 'А', '3': 'В' }
+                },
+                {
+                    id: 15, type: 'match', points: 3,
+                    text: 'Установіть відповідність між характеристикою продуктів (1–3) та хімічним процесом (А–Д):',
+                    leftTitle: 'Характеристика продуктів:',
+                    leftItems: {
+                        '1': 'утворюються одна складна і одна проста речовина',
+                        '2': 'утворюється лише одна складна речовина',
+                        '3': 'утворюються дві складні речовини'
+                    },
+                    rightTitle: 'Хімічний процес:',
+                    rightItems: {
+                        'А': 'взаємодія цинку з хлоридною кислотою',
+                        'Б': 'спалювання карбон(II) оксиду',
+                        'В': 'термічний розклад магній гідроксиду',
+                        'Г': 'взаємодія натрій гідроксиду з калій оксидом',
+                        'Д': 'взаємодія натрій хлориду з калій нітратом'
+                    },
+                    correct: { '1': 'А', '2': 'Б', '3': 'В' }
+                },
+                {
+                    id: 16, type: 'match', points: 3,
+                    text: 'Формули солей позначено буквами А–Д. Доповніть речення (1–3) буквою (А–Д) так, щоби воно стало правильним твердженням.',
+                    leftTitle: 'Твердження:',
+                    leftItems: {
+                        '1': 'Середовище водного розчину солі … — нейтральне.',
+                        '2': 'У водному розчині відбувається гідроліз за аніоном солей Д та ….',
+                        '3': 'Метилоранж набуває рожевого забарвлення у водних розчинах солей Г та ….'
+                    },
+                    rightTitle: 'Формули солей:',
+                    rightItems: {
+                        'А': 'Na₂CO₃',
+                        'Б': 'KNO₃',
+                        'В': 'Al(NO₃)₃',
+                        'Г': 'MgCl₂',
+                        'Д': 'K₂S'
+                    },
+                    correct: { '1': 'Б', '2': 'А', '3': 'В' }
+                },
+                {
+                    id: 17, type: 'numeric', points: 2,
+                    text: 'Значення відносних атомних мас хімічних елементів округлюйте до одиниць.<br>Суміш трьох газів: азот, етен і чадний газ за діаграмою має об’ємні частки відповідно 25%, 50% і 25%.<br><strong>1)</strong> Знайдіть середню молярну масу суміші (г/моль).<br><strong>2)</strong> Знайдіть, яку масову частку (%) має етен у цій суміші.<br><span class="text-xs text-slate-500 font-normal">Упишіть два числа через крапку з комою або пробіл (наприклад: 28; 50).</span>',
+                    svgIllustration: `
+                        <div class="my-3 p-3 bg-slate-50 border border-slate-200 rounded-lg max-w-sm">
+                            <svg viewBox="0 0 320 190" class="w-full h-auto">
+                                <text x="160" y="18" font-size="12" font-weight="bold" text-anchor="middle" fill="#0f172a">Склад газової суміші</text>
+                                <!-- Осі -->
+                                <line x1="45" y1="28" x2="45" y2="155" stroke="#475569" stroke-width="1.5"/>
+                                <line x1="45" y1="155" x2="305" y2="155" stroke="#475569" stroke-width="1.5"/>
+                                <!-- Сітка -->
+                                <line x1="45" y1="103" x2="305" y2="103" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+                                <line x1="45" y1="51" x2="305" y2="51" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+                                <!-- Стовпці -->
+                                <rect x="65" y="103" width="55" height="52" fill="#2563eb"/>
+                                <text x="92.5" y="98" font-size="10" font-weight="bold" text-anchor="middle" fill="#1e40af">25%</text>
+                                <rect x="147" y="51" width="55" height="104" fill="#2563eb"/>
+                                <text x="174.5" y="46" font-size="10" font-weight="bold" text-anchor="middle" fill="#1e40af">50%</text>
+                                <rect x="230" y="103" width="55" height="52" fill="#2563eb"/>
+                                <text x="257.5" y="98" font-size="10" font-weight="bold" text-anchor="middle" fill="#1e40af">25%</text>
+                                <!-- Підписи -->
+                                <g font-size="10" fill="#334155" text-anchor="end">
+                                    <text x="40" y="54">50</text>
+                                    <text x="40" y="106">25</text>
+                                    <text x="40" y="158">0</text>
+                                </g>
+                                <g font-size="10" fill="#0f172a" text-anchor="middle" font-weight="medium">
+                                    <text x="92.5" y="170">Азот (N₂)</text>
+                                    <text x="174.5" y="170">Етен (C₂H₄)</text>
+                                    <text x="257.5" y="170">Чадний газ (CO)</text>
+                                </g>
+                            </svg>
+                        </div>
+                    `,
+                    isMultiNumeric: true,
+                    correct: [28, 50],
+                    unit: 'г/моль та %'
+                },
+                {
+                    id: 18, type: 'numeric', points: 2,
+                    text: 'У розчині масою 100 г масова частка NaOH становить 10%. До цього розчину долили воду. В новоутвореному розчині масова частка NaOH у п'ять разів менша, ніж у початковому. Яка маса води (г), яку долили?',
+                    correct: 400,
+                    unit: 'г'
+                },
+                {
+                    id: 19, type: 'numeric', points: 2,
+                    text: 'Органічна речовина Y повністю згоріла, виділилися CO₂ і H₂O, причому <span class="font-mono">m(Y) : m(O₂) = n(Y) : n(O₂)</span>. У відповідь запишіть молярну масу (г/моль) речовини Y.',
+                    correct: 32,
+                    unit: 'г/моль'
+                },
+                {
+                    id: 20, type: 'numeric', points: 2,
+                    text: 'Порція суміші порошків магнію і магній оксиду має масу 16 г. Унаслідок обробляння такої порції надлишком розведеної сульфатної кислоти виділився газ обʼємом 5,6 л (н. у.). Обчисліть масову частку (%) магній оксиду в суміші.',
+                    correct: 62.5,
+                    unit: '%'
+                }
+            ],
+            2: [
+                {
+                    id: 1, type: 'single', points: 1,
+                    text: 'Позначте формулу складної речовини, молекула якої триатомна.',
+                    options: { 'А': 'CH₂O', 'Б': 'NH₃', 'В': 'CO₂', 'Г': 'O₃' },
+                    correct: 'В'
+                },
+                {
+                    id: 2, type: 'single', points: 1,
+                    text: 'Як змінюються радіус атома й електронегативність у ряду хімічних елементів: Флуор, Хлор, Бром, Йод?',
+                    tableHtml: `
+                        <table class="w-full max-w-md text-xs sm:text-sm border-collapse border border-slate-300 my-3">
+                            <thead class="bg-slate-100">
+                                <tr>
+                                    <th class="border border-slate-300 p-2 w-12"></th>
+                                    <th class="border border-slate-300 p-2">Радіус атома</th>
+                                    <th class="border border-slate-300 p-2">Електронегативність</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="border border-slate-300 p-2 font-bold text-center">А</td><td class="border border-slate-300 p-2">зменшується</td><td class="border border-slate-300 p-2">збільшується</td></tr>
+                                <tr><td class="border border-slate-300 p-2 font-bold text-center">Б</td><td class="border border-slate-300 p-2">збільшується</td><td class="border border-slate-300 p-2">зменшується</td></tr>
+                                <tr><td class="border border-slate-300 p-2 font-bold text-center">В</td><td class="border border-slate-300 p-2">зменшується</td><td class="border border-slate-300 p-2">зменшується</td></tr>
+                                <tr><td class="border border-slate-300 p-2 font-bold text-center">Г</td><td class="border border-slate-300 p-2">збільшується</td><td class="border border-slate-300 p-2">збільшується</td></tr>
+                            </tbody>
+                        </table>
+                    `,
+                    options: {
+                        'А': 'зменшується / збільшується',
+                        'Б': 'збільшується / зменшується',
+                        'В': 'зменшується / зменшується',
+                        'Г': 'збільшується / збільшується'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 3, type: 'single', points: 1,
+                    text: 'Кульками в моделі кристалічних ґраток зображено атоми хімічного елемента. Позначте назву речовини, яка має такі кристалічні ґратки.',
+                    svgIllustration: `
+                        <div class="my-3 p-3 bg-slate-50 border border-slate-200 rounded-lg inline-block">
+                            <svg width="160" height="130" viewBox="0 0 160 130" class="mx-auto">
+                                <g stroke="#64748b" stroke-width="2">
+                                    <line x1="80" y1="20" x2="80" y2="50"/>
+                                    <line x1="80" y1="50" x2="45" y2="75"/>
+                                    <line x1="80" y1="50" x2="115" y2="75"/>
+                                    <line x1="80" y1="50" x2="80" y2="85"/>
+                                    <line x1="45" y1="75" x2="25" y2="105"/>
+                                    <line x1="45" y1="75" x2="65" y2="105"/>
+                                    <line x1="115" y1="75" x2="95" y2="105"/>
+                                    <line x1="115" y1="75" x2="135" y2="105"/>
+                                </g>
+                                <g fill="#0f172a">
+                                    <circle cx="80" cy="20" r="6"/><circle cx="80" cy="50" r="7"/>
+                                    <circle cx="45" cy="75" r="7"/><circle cx="115" cy="75" r="7"/><circle cx="80" cy="85" r="6"/>
+                                    <circle cx="25" cy="105" r="6"/><circle cx="65" cy="105" r="6"/>
+                                    <circle cx="95" cy="105" r="6"/><circle cx="135" cy="105" r="6"/>
+                                </g>
+                            </svg>
+                        </div>
+                    `,
+                    options: { 'А': 'йод', 'Б': 'лід', 'В': 'метан', 'Г': 'алмаз' },
+                    correct: 'Г'
+                },
+                {
+                    id: 4, type: 'single', points: 1,
+                    text: 'За допомогою побутового глечика-роздільника, зображеного на рисунку, можна:',
+                    svgIllustration: `
+                        <div class="my-3 p-3 bg-slate-50 border border-slate-200 rounded-lg inline-block">
+                            <svg width="170" height="120" viewBox="0 0 170 120" class="mx-auto">
+                                <path d="M55 20 L115 20 L110 100 Q110 108 100 108 L65 108 Q55 108 55 100 Z" fill="#e0f2fe" stroke="#334155" stroke-width="2"/>
+                                <rect x="56" y="42" width="58" height="20" fill="#fde047" opacity="0.85"/>
+                                <text x="85" y="55" font-size="9" text-anchor="middle" fill="#854d0e" font-weight="bold">Жир</text>
+                                <text x="85" y="85" font-size="9" text-anchor="middle" fill="#0369a1" font-weight="bold">Бульйон</text>
+                                <path d="M55 98 L25 45 L32 42 L55 86" fill="#bae6fd" stroke="#334155" stroke-width="2"/>
+                                <path d="M114 35 Q138 35 138 65 Q138 92 111 92" fill="none" stroke="#334155" stroke-width="3"/>
+                            </svg>
+                        </div>
+                    `,
+                    options: {
+                        'А': 'розділити столовий оцет на кислоту й воду',
+                        'Б': 'відокремити рідкий жир від м’ясного бульйону',
+                        'В': 'розділити рідкий жир на гліцерол і жирні кислоти',
+                        'Г': 'відокремити етиловий спирт від метилового спирту'
+                    },
+                    correct: 'Б'
+                },
+                {
+                    id: 5, type: 'single', points: 1,
+                    text: 'Досліджували зразок сплаву двох металів і з’ясували, що він лише частково прореагував із розведеною хлоридною кислотою, узятою з надлишком (уважайте, що кожен складник сплаву – окремий метал). Визначте склад сплаву.',
+                    options: { 'А': 'Li, Mg', 'Б': 'Mg, Zn', 'В': 'Zn, Cu', 'Г': 'Cu, Ag' },
+                    correct: 'В'
+                },
+                {
+                    id: 6, type: 'single', points: 1,
+                    text: 'Які гази реагують між собою на повітрі за нормальних умов?',
+                    options: {
+                        'А': 'метан і гідроген сульфід',
+                        'Б': 'метан й амоніак',
+                        'В': 'гідроген хлорид й амоніак',
+                        'Г': 'гідроген хлорид і гідроген сульфід'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 7, type: 'single', points: 1,
+                    text: 'Проаналізуйте твердження.<br><span class="block mt-1.5 pl-3 border-l-2 border-slate-300"><strong>І.</strong> Алюміній може бути складником й аніонів, і катіонів солей.<br><strong>ІІ.</strong> Алюміній оксид реагує і з хлоридною кислотою, і з натрій гідроксидом.</span><span class="block mt-1.5">Чи є поміж них правильні?</span>',
+                    options: {
+                        'А': 'правильне лише І',
+                        'Б': 'правильне лише ІІ',
+                        'В': 'обидва правильні',
+                        'Г': 'немає правильних'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 8, type: 'single', points: 1,
+                    text: 'Позначте формулу солі одноосновної кислоти.',
+                    options: { 'А': 'FeSO₄', 'Б': 'FePO₄', 'В': 'NH₄HCO₃', 'Г': 'HCOONH₄' },
+                    correct: 'Г'
+                },
+                {
+                    id: 9, type: 'single', points: 1,
+                    text: 'В одній пробірці містився водний розчин натрій карбонату, а в другій – водний розчин натрій силікату. В обидві пробірки долили водний розчин речовини Y. Унаслідок цього:<br>– в обох пробірках відбулися хімічні реакції;<br>– лише в одній пробірці утворився осад.<br>Позначте формулу речовини Y.',
+                    options: { 'А': 'KNO₃', 'Б': 'BaCl₂', 'В': 'Ca(OH)₂', 'Г': 'HCl' },
+                    correct: 'Г'
+                },
+                {
+                    id: 10, type: 'single', points: 1,
+                    text: 'Здійснили перетворення: <span class="font-mono bg-slate-100 px-2 py-0.5 rounded">C₂H₆ → C₂H₄ → C₂H₅OH → CH₃COOC₂H₅</span>.<br>Поміж реакцій, які відбулися, немає реакції:',
+                    options: { 'А': 'дегідрування', 'Б': 'гідрування', 'В': 'гідратації', 'Г': 'естерифікації' },
+                    correct: 'В'
+                },
+                {
+                    id: 11, type: 'single', points: 1,
+                    text: 'Бензен можна добути:',
+                    options: {
+                        'А': 'окисненням фенолу',
+                        'Б': 'ізомеризацією гексану',
+                        'В': 'тримеризацією етину',
+                        'Г': 'гідруванням циклогексану'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 12, type: 'single', points: 1,
+                    text: 'Позначте правильне твердження щодо кислотних або осно́вних властивостей деяких речовин у водних розчинах за однакових умов.',
+                    options: {
+                        'А': 'Анілін виявляє сильніші осно́вні властивості, ніж амоніак.',
+                        'Б': 'Амоніак є сильнішою осно́вою, ніж метанамін.',
+                        'В': 'Фенол виявляє сильніші кислотні властивості, ніж етанол.',
+                        'Г': 'Етанова кислота є сильнішою кислотою, ніж метанова кислота.'
+                    },
+                    correct: 'В'
+                },
+                {
+                    id: 13, type: 'single', points: 1,
+                    text: 'До водного розчину з масовою часткою сульфатної кислоти 5 % додали залізні ошурки. Відбулася хімічна реакція. Укажіть формулу одного з продуктів цієї реакції.',
+                    options: { 'А': 'H₂', 'Б': 'H₂S', 'В': 'SO₂', 'Г': 'SO₃' },
+                    correct: 'А'
+                },
+                {
+                    id: 14, type: 'match', points: 3,
+                    text: 'З наведених фрагментів тексту складіть три правильні твердження за зразком: «Утворення (1–3) є наслідком реакції, що відбулася після (А–Д)».',
+                    leftTitle: 'Утворення:',
+                    leftItems: {
+                        '1': 'розчину синього кольору',
+                        '2': 'блискучого шару металу на стінках посудини',
+                        '3': 'вибухонебезпечного газу'
+                    },
+                    rightTitle: 'є наслідком реакції, що відбулася після:',
+                    rightItems: {
+                        'А': 'занурення магнієвої стрічки у водний розчин метанової кислоти',
+                        'Б': 'змішування розчину гліцеролу зі свіжоосадженим купрум(ІІ) гідроксидом за надлишку лугу',
+                        'В': 'змішування розчину метаналю з амоніачним розчином аргентум(І) оксиду й нагрівання суміші',
+                        'Г': 'змішування фенолу з бромною водою',
+                        'Д': 'змішування аргентум(І) нітрату з хлоридною кислотою'
+                    },
+                    correct: { '1': 'Б', '2': 'В', '3': 'А' }
+                },
+                {
+                    id: 15, type: 'match', points: 3,
+                    text: 'Формули солей позначено буквами А–Д. Доповніть речення (1–3) буквою (А–Д) так, щоби воно стало правильним твердженням.',
+                    leftTitle: 'Твердження:',
+                    leftItems: {
+                        '1': 'Середовище водного розчину солі … – нейтральне.',
+                        '2': 'У водному розчині відбувається гідроліз за аніоном солей Д та ….',
+                        '3': 'Метилоранж набуває рожевого забарвлення у водних розчинах солей Б та ….'
+                    },
+                    rightTitle: 'Формули солей:',
+                    rightItems: {
+                        'А': 'KCl',
+                        'Б': 'AlCl₃',
+                        'В': 'Na₂S',
+                        'Г': 'ZnSO₄',
+                        'Д': 'K₃PO₄'
+                    },
+                    correct: { '1': 'А', '2': 'В', '3': 'Г' }
+                },
+                {
+                    id: 16, type: 'match', points: 3,
+                    text: 'Установіть відповідність між йоном (1–4) та реактивом (А–Д), який використовують для його якісного визначення.',
+                    leftTitle: 'Йон:',
+                    leftItems: {
+                        '1': 'Fe³⁺',
+                        '2': 'SO₄²⁻',
+                        '3': 'CO₃²⁻',
+                        '4': 'NH₄⁺'
+                    },
+                    rightTitle: 'Реактив та ознака:',
+                    rightItems: {
+                        'А': 'BaCl₂ (білий осад)',
+                        'Б': 'HCl (виділення газу)',
+                        'В': 'NaOH (запах амоніаку при нагріванні)',
+                        'Г': 'KSCN (криваво-червоне забарвлення)',
+                        'Д': 'AgNO₃ (сирнистий осад)'
+                    },
+                    correct: { '1': 'Г', '2': 'А', '3': 'Б', '4': 'В' }
+                },
+                {
+                    id: 17, type: 'numeric', points: 2,
+                    text: 'За кривою розчинності натрій йодиду визначте його масову частку (%) у насиченому за температури 90 ºС водному розчині.',
+                    svgIllustration: `
+                        <div class="my-3 p-3 bg-slate-50 border border-slate-200 rounded-lg max-w-sm">
+                            <svg viewBox="0 0 320 230" class="w-full h-auto">
+                                <rect x="55" y="15" width="245" height="175" fill="#ffffff" stroke="#64748b" stroke-width="1.5"/>
+                                <g stroke="#e2e8f0" stroke-width="1">
+                                    <line x1="104" y1="15" x2="104" y2="190"/>
+                                    <line x1="153" y1="15" x2="153" y2="190"/>
+                                    <line x1="202" y1="15" x2="202" y2="190"/>
+                                    <line x1="251" y1="15" x2="251" y2="190"/>
+                                    <line x1="275.5" y1="15" x2="275.5" y2="190" stroke="#94a3b8" stroke-dasharray="3,3"/>
+                                </g>
+                                <g stroke="#e2e8f0" stroke-width="1">
+                                    <line x1="55" y1="58.75" x2="300" y2="58.75"/>
+                                    <line x1="55" y1="102.5" x2="300" y2="102.5"/>
+                                    <line x1="55" y1="146.25" x2="300" y2="146.25"/>
+                                </g>
+                                <path d="M 55 183 Q 130 155, 177 122 T 226.5 64 L 275.5 58.75 L 300 56" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                                <circle cx="275.5" cy="58.75" r="3.5" fill="#dc2626"/>
+                                <text x="260" y="38" fill="#0284c7" font-weight="bold" font-size="14">NaI</text>
+                                <g font-size="11" fill="#334155" text-anchor="end">
+                                    <text x="50" y="19">350</text>
+                                    <text x="50" y="62">300</text>
+                                    <text x="50" y="106">250</text>
+                                    <text x="50" y="150">200</text>
+                                    <text x="50" y="193">150</text>
+                                </g>
+                                <g font-size="11" fill="#334155" text-anchor="middle">
+                                    <text x="55" y="205">0</text>
+                                    <text x="104" y="205">20</text>
+                                    <text x="153" y="205">40</text>
+                                    <text x="202" y="205">60</text>
+                                    <text x="251" y="205">80</text>
+                                    <text x="300" y="205">100</text>
+                                    <text x="177" y="223" font-weight="bold">Температура, °C</text>
+                                </g>
+                                <text x="15" y="105" font-size="11" fill="#334155" font-weight="bold" transform="rotate(-90 15,105)" text-anchor="middle">Розчинність, г/100 г води</text>
+                            </svg>
+                        </div>
+                    `,
+                    correct: 75,
+                    unit: '%'
+                },
+                {
+                    id: 18, type: 'numeric', points: 2,
+                    text: 'Унаслідок взаємодії азоту з воднем утворився амоніак об’ємом 60 л. Об’єм водню, узятого для реакції, дорівнює 600 л. Обчисліть відносний вихід (%) амоніаку (об’єми газів виміряно за однакових умов).',
+                    correct: 15,
+                    unit: '%'
+                },
+                {
+                    id: 19, type: 'numeric', points: 2,
+                    text: 'До розчину, що містить 98 г сульфатної кислоти, додали розчин барій хлориду в надлишку. Обчисліть масу (г) осаду, що утворився.',
+                    correct: 233,
+                    unit: 'г'
+                },
+                {
+                    id: 20, type: 'numeric', points: 2,
+                    text: 'Обчисліть відносну молекулярну масу естеру, який утворився внаслідок реакції бутанолу з етановою кислотою.',
+                    correct: 116,
+                    unit: ''
+                }
+            ]
+        };
+
+        let currentVariant = 1;
+        let timerInterval = null;
+        let timeLeft = 60 * 60;
+
+        function startVariant(variantNum) {
+            currentVariant = variantNum;
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('test-screen').classList.remove('hidden');
+            document.getElementById('test-screen').classList.add('flex');
+            
+            document.getElementById('header-variant-title').textContent = `Хімія (Варіант ${variantNum})`;
+            document.getElementById('modal-variant-badge').textContent = `Хімія • Варіант ${variantNum}`;
+            
+            // Скидання кнопок завершення
+            const submitBtn = document.getElementById('submit-btn');
+            const finishTopBtn = document.getElementById('finish-top-btn');
+            submitBtn.disabled = false;
+            finishTopBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            finishTopBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            document.getElementById('answered-count').textContent = '0';
+
+            renderQuiz(variantsData[variantNum]);
+            startTimer();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToMenu() {
+            clearInterval(timerInterval);
+            document.getElementById('results-modal').classList.add('hidden');
+            document.getElementById('test-screen').classList.add('hidden');
+            document.getElementById('test-screen').classList.remove('flex');
+            document.getElementById('start-screen').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            timeLeft = 60 * 60;
+            const timerEl = document.getElementById('timer');
+            timerEl.textContent = '60:00';
+            timerEl.classList.remove('text-rose-400');
+
+            timerInterval = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    gradeTest();
+                    return;
+                }
+                timeLeft--;
+                const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+                const s = (timeLeft % 60).toString().padStart(2, '0');
+                timerEl.textContent = `${m}:${s}`;
+                if (timeLeft < 300) timerEl.classList.add('text-rose-400');
+            }, 1000);
+        }
+
+        function renderQuiz(quizData) {
+            const navGrid = document.getElementById('nav-grid');
+            const questionsContainer = document.getElementById('questions-container');
+            navGrid.innerHTML = '';
+            questionsContainer.innerHTML = '';
+
+            quizData.forEach((q) => {
+                // Кнопка навігації зверху
+                const navBtn = document.createElement('button');
+                navBtn.type = 'button';
+                navBtn.id = `nav-btn-${q.id}`;
+                navBtn.textContent = q.id;
+                navBtn.className = 'w-8 h-8 text-xs font-bold rounded border border-slate-300 bg-slate-50 text-slate-700 hover:border-blue-500 transition cursor-pointer flex items-center justify-center';
+                navBtn.onclick = () => {
+                    document.getElementById(`card-q-${q.id}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+                };
+                navGrid.appendChild(navBtn);
+
+                // Картка завдання
+                const card = document.createElement('div');
+                card.id = `card-q-${q.id}`;
+                card.className = 'bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden transition';
+
+                let partLabel = q.type === 'single' ? 'Вибір однієї відповіді' : (q.type === 'match' ? 'Встановлення відповідності' : 'Коротка числова відповідь');
+                let pointsBadge = q.points === 1 ? '1 бал' : `${q.points} бали`;
+
+                let innerHTML = `
+                    <div class="bg-slate-50 border-b border-slate-200 px-5 py-3 flex justify-between items-center">
+                        <div class="flex items-center space-x-2.5">
+                            <span class="bg-slate-800 text-white text-xs font-bold px-2.5 py-1 rounded">Завдання ${q.id}</span>
+                            <span class="text-xs font-medium text-slate-500 hidden sm:inline">${partLabel}</span>
+                        </div>
+                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded-full">${pointsBadge}</span>
+                    </div>
+                    <div class="p-5 sm:p-6">
+                        <div class="text-slate-900 font-medium text-base leading-relaxed mb-4">${q.text}</div>
+                        ${q.tableHtml || ''}
+                        ${q.svgIllustration || ''}
+                `;
+
+                if (q.type === 'single') {
+                    innerHTML += `<div class="space-y-2.5 mt-3">`;
+                    for (const [letter, optText] of Object.entries(q.options)) {
+                        innerHTML += `
+                            <label class="nmt-radio-box flex items-center space-x-3 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="q_${q.id}" value="${letter}" class="hidden" onchange="updateProgress()">
+                                <span class="w-7 h-7 rounded-md border border-slate-300 flex items-center justify-center font-bold text-sm text-slate-700 bg-white shrink-0 letter-badge">${letter}</span>
+                                <span class="text-sm sm:text-base text-slate-800">${optText}</span>
+                            </label>
+                        `;
+                    }
+                    innerHTML += `</div>`;
+                } else if (q.type === 'match') {
+                    const rightKeys = Object.keys(q.rightItems);
+                    innerHTML += `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm mb-5">
+                            <div>
+                                <div class="font-bold text-slate-700 mb-2">${q.leftTitle}</div>
+                                <ul class="space-y-1.5">
+                                    ${Object.entries(q.leftItems).map(([k, v]) => `<li><strong class="text-blue-700">${k}</strong> — ${v}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="font-bold text-slate-700 mb-2">${q.rightTitle}</div>
+                                <ul class="space-y-1.5">
+                                    ${Object.entries(q.rightItems).map(([k, v]) => `<li><strong class="text-slate-900">${k}</strong> — ${v}</li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="border-collapse border border-slate-300 text-center text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 px-3 py-2 text-slate-600 font-semibold">№</th>
+                                        ${rightKeys.map(rk => `<th class="border border-slate-300 w-10 py-2 font-bold text-slate-800">${rk}</th>`).join('')}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${Object.keys(q.leftItems).map(lk => `
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-2 font-bold bg-slate-50">${lk}</td>
+                                            ${rightKeys.map(rk => `
+                                                <td class="border border-slate-300 p-0">
+                                                    <label class="matrix-cell w-10 h-10 flex items-center justify-center cursor-pointer hover:bg-blue-50 transition font-semibold text-slate-500">
+                                                        <input type="radio" name="q_${q.id}_${lk}" value="${rk}" class="hidden" onchange="updateProgress()">
+                                                        <span>✕</span>
+                                                    </label>
+                                                </td>
+                                            `).join('')}
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                } else if (q.type === 'numeric') {
+                    if (q.isMultiNumeric) {
+                        innerHTML += `
+                            <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">1) Середня молярна маса (г/моль):</label>
+                                    <input type="text" inputmode="decimal" name="q_${q.id}_1" placeholder="Число..." oninput="updateProgress()" class="w-full border-2 border-slate-300 rounded-lg px-4 py-2 font-mono text-base font-bold text-slate-900 focus:border-blue-600 focus:outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-500 uppercase mb-1">2) Масова частка етену (%):</label>
+                                    <input type="text" inputmode="decimal" name="q_${q.id}_2" placeholder="Число..." oninput="updateProgress()" class="w-full border-2 border-slate-300 rounded-lg px-4 py-2 font-mono text-base font-bold text-slate-900 focus:border-blue-600 focus:outline-none">
+                                </div>
+                            </div>
+                            <div id="feedback-q-${q.id}" class="hidden mt-2 text-sm font-semibold"></div>
+                        `;
+                    } else {
+                        innerHTML += `
+                            <div class="mt-4">
+                                <label class="block text-xs font-semibold text-slate-500 uppercase mb-1.5">Упишіть лише числове значення:</label>
+                                <div class="flex items-center space-x-2">
+                                    <input type="text" inputmode="decimal" name="q_${q.id}" placeholder="Ваша відповідь..." oninput="updateProgress()" class="w-48 border-2 border-slate-300 rounded-lg px-4 py-2.5 font-mono text-base font-bold text-slate-900 focus:border-blue-600 focus:outline-none">
+                                    ${q.unit ? `<span class="text-slate-600 font-semibold">${q.unit}</span>` : ''}
+                                </div>
+                                <div id="feedback-q-${q.id}" class="hidden mt-2 text-sm font-semibold"></div>
+                            </div>
+                        `;
+                    }
+                }
+
+                innerHTML += `</div>`;
+                card.innerHTML = innerHTML;
+                questionsContainer.appendChild(card);
+            });
+        }
+
+        // Підсвічування обраної літери
+        document.addEventListener('change', (e) => {
+            if (e.target.type === 'radio' && !e.target.name.includes('_', 2)) {
+                const group = document.querySelectorAll(`input[name="${e.target.name}"]`);
+                group.forEach(inp => {
+                    const badge = inp.parentElement.querySelector('.letter-badge');
+                    if (inp.checked) {
+                        badge.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+                        badge.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+                    } else {
+                        badge.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+                        badge.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                    }
+                });
+            }
+        });
+
+        function updateProgress() {
+            const quizData = variantsData[currentVariant];
+            let answered = 0;
+            quizData.forEach(q => {
+                let isAnswered = false;
+                if (q.type === 'single') {
+                    isAnswered = !!document.querySelector(`input[name="q_${q.id}"]:checked`);
+                } else if (q.type === 'match') {
+                    const keys = Object.keys(q.leftItems);
+                    isAnswered = keys.every(k => !!document.querySelector(`input[name="q_${q.id}_${k}"]:checked`));
+                } else if (q.type === 'numeric') {
+                    if (q.isMultiNumeric) {
+                        const v1 = document.querySelector(`input[name="q_${q.id}_1"]`).value.trim();
+                        const v2 = document.querySelector(`input[name="q_${q.id}_2"]`).value.trim();
+                        isAnswered = v1 !== '' && v2 !== '';
+                    } else {
+                        const val = document.querySelector(`input[name="q_${q.id}"]`).value.trim();
+                        isAnswered = val !== '';
+                    }
+                }
+
+                const navBtn = document.getElementById(`nav-btn-${q.id}`);
+                if (isAnswered) {
+                    answered++;
+                    navBtn.classList.add('nmt-tab-answered');
+                } else {
+                    navBtn.classList.remove('nmt-tab-answered');
+                }
+            });
+            document.getElementById('answered-count').textContent = answered;
+        }
+
+        document.getElementById('toggle-ref-btn').addEventListener('click', () => {
+            document.getElementById('ref-materials').classList.toggle('hidden');
+        });
+
+        function calculateScaledNMT(rawScore) {
+            if (rawScore < 4) return 'Не склав (поріг 4 б.)';
+            return Math.round(100 + ((rawScore - 4) / 26) * 100);
+        }
+
+        function gradeTest() {
+            clearInterval(timerInterval);
+            const quizData = variantsData[currentVariant];
+            let part1 = 0, part2 = 0, part3 = 0;
+
+            quizData.forEach(q => {
+                const navBtn = document.getElementById(`nav-btn-${q.id}`);
+                navBtn.classList.remove('nmt-tab-answered');
+
+                if (q.type === 'single') {
+                    const checked = document.querySelector(`input[name="q_${q.id}"]:checked`);
+                    const correctInput = document.querySelector(`input[name="q_${q.id}"][value="${q.correct}"]`);
+                    
+                    if (checked && checked.value === q.correct) {
+                        part1 += 1;
+                        navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                    } else {
+                        navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                        if (checked) checked.parentElement.classList.add('bg-rose-50', 'border-rose-500');
+                    }
+                    if (correctInput) {
+                        correctInput.parentElement.classList.add('bg-emerald-50', 'border-emerald-500', 'ring-1', 'ring-emerald-500');
+                    }
+                } 
+                else if (q.type === 'match') {
+                    let rowHits = 0;
+                    const leftKeys = Object.keys(q.leftItems);
+                    leftKeys.forEach(lk => {
+                        const checked = document.querySelector(`input[name="q_${q.id}_${lk}"]:checked`);
+                        const correctCell = document.querySelector(`input[name="q_${q.id}_${lk}"][value="${q.correct[lk]}"]`).parentElement;
+                        
+                        if (checked && checked.value === q.correct[lk]) {
+                            rowHits++;
+                            checked.parentElement.classList.add('!bg-emerald-600', '!text-white');
+                        } else {
+                            if (checked) checked.parentElement.classList.add('!bg-rose-600', '!text-white');
+                            correctCell.classList.add('bg-emerald-100', 'text-emerald-800', 'font-bold');
+                        }
+                    });
+
+                    let qEarned = leftKeys.length === 3 ? rowHits : Math.round((rowHits / 4) * 3);
+                    part2 += qEarned;
+
+                    if (qEarned === 3) navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                    else if (qEarned > 0) navBtn.classList.add('bg-amber-500', 'text-white', 'border-amber-500');
+                    else navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                } 
+                else if (q.type === 'numeric') {
+                    const feedbackEl = document.getElementById(`feedback-q-${q.id}`);
+                    feedbackEl.classList.remove('hidden');
+
+                    if (q.isMultiNumeric) {
+                        const inp1 = document.querySelector(`input[name="q_${q.id}_1"]`);
+                        const inp2 = document.querySelector(`input[name="q_${q.id}_2"]`);
+                        const v1 = parseFloat(inp1.value.trim().replace(',', '.'));
+                        const v2 = parseFloat(inp2.value.trim().replace(',', '.'));
+                        let pts = 0;
+                        if (!isNaN(v1) && Math.abs(v1 - q.correct[0]) < 0.01) {
+                            pts += 1;
+                            inp1.classList.add('border-emerald-500', 'bg-emerald-50');
+                        } else {
+                            inp1.classList.add('border-rose-500', 'bg-rose-50');
+                        }
+                        if (!isNaN(v2) && Math.abs(v2 - q.correct[1]) < 0.01) {
+                            pts += 1;
+                            inp2.classList.add('border-emerald-500', 'bg-emerald-50');
+                        } else {
+                            inp2.classList.add('border-rose-500', 'bg-rose-50');
+                        }
+                        part3 += pts;
+                        if (pts === 2) {
+                            feedbackEl.innerHTML = `<span class="text-emerald-700">✓ Повністю правильно (+2 бали)</span>`;
+                            navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                        } else if (pts === 1) {
+                            feedbackEl.innerHTML = `<span class="text-amber-700">⚠ Частково правильно (+1 бал). Правильні відповіді: <strong>${q.correct[0]}</strong> та <strong>${q.correct[1]}</strong></span>`;
+                            navBtn.classList.add('bg-amber-500', 'text-white', 'border-amber-500');
+                        } else {
+                            feedbackEl.innerHTML = `<span class="text-rose-700">✕ Неправильно (0 балів). Правильні відповіді: <strong>${q.correct[0]}</strong> та <strong>${q.correct[1]}</strong></span>`;
+                            navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                        }
+                    } else {
+                        const input = document.querySelector(`input[name="q_${q.id}"]`);
+                        const rawVal = input.value.trim().replace(',', '.');
+                        const numVal = parseFloat(rawVal);
+
+                        if (!isNaN(numVal) && Math.abs(numVal - q.correct) < 0.01) {
+                            part3 += 2;
+                            input.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+                            feedbackEl.innerHTML = `<span class="text-emerald-700">✓ Правильно (+2 бали)</span>`;
+                            navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                        } else {
+                            input.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
+                            feedbackEl.innerHTML = `<span class="text-rose-700">✕ Неправильно (0 балів). Правильна відповідь: <strong>${q.correct}</strong></span>`;
+                            navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                        }
+                    }
+                }
+            });
+
+            document.querySelectorAll('#nmt-form input').forEach(el => el.disabled = true);
+            document.getElementById('submit-btn').disabled = true;
+            document.getElementById('finish-top-btn').disabled = true;
+            document.getElementById('submit-btn').classList.add('opacity-50', 'cursor-not-allowed');
+            document.getElementById('finish-top-btn').classList.add('opacity-50', 'cursor-not-allowed');
+
+            const totalRaw = part1 + part2 + part3;
+            const scaled = calculateScaledNMT(totalRaw);
+
+            document.getElementById('raw-score').textContent = totalRaw;
+            document.getElementById('nmt-scaled-score').textContent = scaled;
+            document.getElementById('part1-score').textContent = `${part1} / 13`;
+            document.getElementById('part2-score').textContent = `${part2} / 9`;
+            document.getElementById('part3-score').textContent = `${part3} / 8`;
+
+            const statusEl = document.getElementById('pass-status');
+            if (totalRaw >= 4) {
+                statusEl.innerHTML = `Поріг «склав / не склав» (4 тестові бали) <span class="text-emerald-600 font-bold">подолано!</span>`;
+            } else {
+                statusEl.innerHTML = `Поріг «склав / не склав» (4 тестові бали) <span class="text-rose-600 font-bold">не подолано.</span>`;
+            }
+
+            document.getElementById('results-modal').classList.remove('hidden');
+        }
+
+        document.getElementById('submit-btn').addEventListener('click', gradeTest);
+        document.getElementById('finish-top-btn').addEventListener('click', gradeTest);
+        document.getElementById('review-btn').addEventListener('click', () => {
+            document.getElementById('results-modal').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
