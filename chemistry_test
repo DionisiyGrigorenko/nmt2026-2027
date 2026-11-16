@@ -23,8 +23,8 @@
         <header class="bg-slate-900 text-white py-4 px-6 border-b border-slate-700 shadow-sm">
             <div class="max-w-5xl mx-auto flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">НМТ УЛ № 3</span>
-                    <span class="font-bold text-lg tracking-tight">Пробне НМТ Уманський ліцей № 3</span>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">НМТ 2026</span>
+                    <span class="font-bold text-lg tracking-tight">Український центр оцінювання якості освіти • Тренажер</span>
                 </div>
                 <span class="text-xs text-slate-400 hidden sm:inline">Предмет: Хімія</span>
             </div>
@@ -58,6 +58,35 @@
                         <div class="font-bold text-blue-700">Завдання 17–20</div>
                         <div class="text-slate-600 mt-0.5">Числова відповідь • <strong>по 2 бали</strong> (8 б.)</div>
                     </div>
+                </div>
+
+                <!-- Реєстрація учня перед початком -->
+                <div class="max-w-2xl mx-auto bg-slate-50 p-5 rounded-2xl border border-slate-200 text-left space-y-4">
+                    <div class="text-xs font-bold uppercase tracking-wider text-slate-500">Дані учасника тестування</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label for="student-lastname" class="block text-xs font-semibold text-slate-700 mb-1">Прізвище <span class="text-rose-600">*</span></label>
+                            <input type="text" id="student-lastname" placeholder="Наприклад: Шевченко" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="student-firstname" class="block text-xs font-semibold text-slate-700 mb-1">Ім’я <span class="text-rose-600">*</span></label>
+                            <input type="text" id="student-firstname" placeholder="Наприклад: Тарас" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="student-class" class="block text-xs font-semibold text-slate-700 mb-1">Клас <span class="text-rose-600">*</span></label>
+                            <select id="student-class" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:border-blue-600 focus:outline-none cursor-pointer">
+                                <option value="" disabled selected>Оберіть клас...</option>
+                                <option value="11-А">11-А</option>
+                                <option value="11-Б">11-Б</option>
+                                <option value="11-В">11-В</option>
+                                <option value="11-Г">11-Г</option>
+                                <option value="11-Д">11-Д</option>
+                                <option value="11-Е">11-Е</option>
+                                <option value="11-І">11-І</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p id="reg-error" class="hidden text-xs font-semibold text-rose-600">Будь ласка, введіть прізвище, ім’я та оберіть клас перед початком тестування.</p>
                 </div>
 
                 <!-- Картки вибору варіанту -->
@@ -111,8 +140,11 @@
                     <button type="button" onclick="returnToMenu()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold px-2.5 py-1.5 rounded border border-slate-600 transition cursor-pointer" title="Повернутися до вибору варіанту">
                         ← Варіанти
                     </button>
-                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">НМТ УЛ № 3 </span>
-                    <h1 id="header-variant-title" class="text-base sm:text-lg font-bold tracking-tight">Хімія (Варіант 1)</h1>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded uppercase tracking-wider">НМТ 2026</span>
+                    <div>
+                        <h1 id="header-variant-title" class="text-base sm:text-lg font-bold tracking-tight leading-tight">Хімія (Варіант 1)</h1>
+                        <div id="header-student-info" class="text-xs text-slate-300 font-medium"></div>
+                    </div>
                 </div>
                 
                 <div class="flex items-center space-x-3 sm:space-x-4">
@@ -183,9 +215,15 @@
     <!-- Модальне вікно результатів у стилі УЦОЯО -->
     <div id="results-modal" class="hidden fixed inset-0 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4 z-50">
         <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-6">
-            <div class="border-b border-slate-200 pb-4 flex justify-between items-center">
-                <h2 class="text-xl font-bold text-slate-900">Результат тестування НМТ</h2>
+            <div class="border-b border-slate-200 pb-4 flex flex-wrap justify-between items-start gap-2">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Результат тестування НМТ</h2>
+                    <p id="modal-student-info" class="text-xs sm:text-sm text-slate-600 font-medium mt-0.5"></p>
+                </div>
                 <span id="modal-variant-badge" class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded">Хімія • Варіант 1</span>
+            </div>
+            <div id="sync-status" class="text-xs text-center py-2 px-3 rounded-lg bg-slate-100 text-slate-600 border border-slate-200">
+                Збереження результату в таблицю...
             </div>
 
             <div class="grid grid-cols-2 gap-4 text-center">
@@ -217,10 +255,7 @@
             <p id="pass-status" class="text-sm text-center font-medium text-slate-700"></p>
 
             <div class="flex flex-col sm:flex-row gap-3">
-                <button type="button" id="review-btn" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-lg transition cursor-pointer">
-                    Переглянути відповіді
-                </button>
-                <button type="button" onclick="returnToMenu()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold py-3 rounded-lg border border-slate-300 transition cursor-pointer">
+                <button type="button" onclick="returnToMenu()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3 rounded-lg transition cursor-pointer">
                     До вибору варіанту
                 </button>
             </div>
@@ -285,8 +320,8 @@
                     id: 4, type: 'single', points: 1,
                     text: 'Лід перетворили на рідку воду. Відомо, що густина льоду становить 0,92 г/см³, а густина води — 1,00 г/см³.<br>Яке з наведених тверджень є правильним?',
                     options: {
-                        'А': 'Кількість водневих зв'язків між молекулами води збільшилася.',
-                        'Б': 'Кількість водневих зв'язків між молекулами води зменшилася.',
+                        'А': 'Кількість водневих зв’язків між молекулами води збільшилася.',
+                        'Б': 'Кількість водневих зв’язків між молекулами води зменшилася.',
                         'В': 'Маса зразка збільшилася.',
                         'Г': 'Густина води стала меншою, ніж густина льоду.'
                     },
@@ -520,7 +555,7 @@
                 },
                 {
                     id: 18, type: 'numeric', points: 2,
-                    text: 'У розчині масою 100 г масова частка NaOH становить 10%. До цього розчину долили воду. В новоутвореному розчині масова частка NaOH у п'ять разів менша, ніж у початковому. Яка маса води (г), яку долили?',
+                    text: 'У розчині масою 100 г масова частка NaOH становить 10%. До цього розчину долили воду. В новоутвореному розчині масова частка NaOH у п’ять разів менша, ніж у початковому. Яка маса води (г), яку долили?',
                     correct: 400,
                     unit: 'г'
                 },
@@ -821,18 +856,36 @@
             ]
         };
 
+        // ВСТАВТЕ СЮДИ ПОСИЛАННЯ НА ВАШ ВЕБ-ДОДАТОК GOOGLE APPS SCRIPT (після розгортання):
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0Z0qNgLJNnYATGOpYwl4GNS3RW0qeX3z8XtIMx_6e60JJ4KgWXenK8cO289oFDVo/exec';
+
         let currentVariant = 1;
+        let studentData = { lastName: '', firstName: '', studentClass: '' };
         let timerInterval = null;
         let timeLeft = 60 * 60;
 
         function startVariant(variantNum) {
+            const lastName = document.getElementById('student-lastname').value.trim();
+            const firstName = document.getElementById('student-firstname').value.trim();
+            const studentClass = document.getElementById('student-class').value;
+            const errEl = document.getElementById('reg-error');
+
+            if (!lastName || !firstName || !studentClass) {
+                errEl.classList.remove('hidden');
+                return;
+            }
+            errEl.classList.add('hidden');
+            studentData = { lastName, firstName, studentClass };
+
             currentVariant = variantNum;
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('test-screen').classList.remove('hidden');
             document.getElementById('test-screen').classList.add('flex');
             
             document.getElementById('header-variant-title').textContent = `Хімія (Варіант ${variantNum})`;
+            document.getElementById('header-student-info').textContent = `${lastName} ${firstName} • ${studentClass}`;
             document.getElementById('modal-variant-badge').textContent = `Хімія • Варіант ${variantNum}`;
+            document.getElementById('modal-student-info').textContent = `Учень: ${lastName} ${firstName} (${studentClass})`;
             
             // Скидання кнопок завершення
             const submitBtn = document.getElementById('submit-btn');
@@ -1070,96 +1123,65 @@
             clearInterval(timerInterval);
             const quizData = variantsData[currentVariant];
             let part1 = 0, part2 = 0, part3 = 0;
+            const questionResults = {};
 
             quizData.forEach(q => {
-                const navBtn = document.getElementById(`nav-btn-${q.id}`);
-                navBtn.classList.remove('nmt-tab-answered');
-
                 if (q.type === 'single') {
                     const checked = document.querySelector(`input[name="q_${q.id}"]:checked`);
-                    const correctInput = document.querySelector(`input[name="q_${q.id}"][value="${q.correct}"]`);
-                    
+                    const userAns = checked ? checked.value : '—';
                     if (checked && checked.value === q.correct) {
                         part1 += 1;
-                        navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                        questionResults[`q${q.id}`] = `1 (${userAns})`;
                     } else {
-                        navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
-                        if (checked) checked.parentElement.classList.add('bg-rose-50', 'border-rose-500');
-                    }
-                    if (correctInput) {
-                        correctInput.parentElement.classList.add('bg-emerald-50', 'border-emerald-500', 'ring-1', 'ring-emerald-500');
+                        questionResults[`q${q.id}`] = `0 (${userAns} / прав: ${q.correct})`;
                     }
                 } 
                 else if (q.type === 'match') {
                     let rowHits = 0;
                     const leftKeys = Object.keys(q.leftItems);
+                    const userPairs = [];
+                    const correctPairs = [];
                     leftKeys.forEach(lk => {
                         const checked = document.querySelector(`input[name="q_${q.id}_${lk}"]:checked`);
-                        const correctCell = document.querySelector(`input[name="q_${q.id}_${lk}"][value="${q.correct[lk]}"]`).parentElement;
-                        
+                        const uVal = checked ? checked.value : '—';
+                        userPairs.push(`${lk}-${uVal}`);
+                        correctPairs.push(`${lk}-${q.correct[lk]}`);
                         if (checked && checked.value === q.correct[lk]) {
                             rowHits++;
-                            checked.parentElement.classList.add('!bg-emerald-600', '!text-white');
-                        } else {
-                            if (checked) checked.parentElement.classList.add('!bg-rose-600', '!text-white');
-                            correctCell.classList.add('bg-emerald-100', 'text-emerald-800', 'font-bold');
                         }
                     });
-
                     let qEarned = leftKeys.length === 3 ? rowHits : Math.round((rowHits / 4) * 3);
                     part2 += qEarned;
-
-                    if (qEarned === 3) navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
-                    else if (qEarned > 0) navBtn.classList.add('bg-amber-500', 'text-white', 'border-amber-500');
-                    else navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                    if (qEarned === 3) {
+                        questionResults[`q${q.id}`] = `3 (${userPairs.join(', ')})`;
+                    } else {
+                        questionResults[`q${q.id}`] = `${qEarned} (${userPairs.join(', ')} / прав: ${correctPairs.join(', ')})`;
+                    }
                 } 
                 else if (q.type === 'numeric') {
-                    const feedbackEl = document.getElementById(`feedback-q-${q.id}`);
-                    feedbackEl.classList.remove('hidden');
-
                     if (q.isMultiNumeric) {
                         const inp1 = document.querySelector(`input[name="q_${q.id}_1"]`);
                         const inp2 = document.querySelector(`input[name="q_${q.id}_2"]`);
-                        const v1 = parseFloat(inp1.value.trim().replace(',', '.'));
-                        const v2 = parseFloat(inp2.value.trim().replace(',', '.'));
+                        const raw1 = inp1.value.trim();
+                        const raw2 = inp2.value.trim();
+                        const v1 = parseFloat(raw1.replace(',', '.'));
+                        const v2 = parseFloat(raw2.replace(',', '.'));
                         let pts = 0;
-                        if (!isNaN(v1) && Math.abs(v1 - q.correct[0]) < 0.01) {
-                            pts += 1;
-                            inp1.classList.add('border-emerald-500', 'bg-emerald-50');
-                        } else {
-                            inp1.classList.add('border-rose-500', 'bg-rose-50');
-                        }
-                        if (!isNaN(v2) && Math.abs(v2 - q.correct[1]) < 0.01) {
-                            pts += 1;
-                            inp2.classList.add('border-emerald-500', 'bg-emerald-50');
-                        } else {
-                            inp2.classList.add('border-rose-500', 'bg-rose-50');
-                        }
+                        if (!isNaN(v1) && Math.abs(v1 - q.correct[0]) < 0.01) pts += 1;
+                        if (!isNaN(v2) && Math.abs(v2 - q.correct[1]) < 0.01) pts += 1;
                         part3 += pts;
-                        if (pts === 2) {
-                            feedbackEl.innerHTML = `<span class="text-emerald-700">✓ Повністю правильно (+2 бали)</span>`;
-                            navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
-                        } else if (pts === 1) {
-                            feedbackEl.innerHTML = `<span class="text-amber-700">⚠ Частково правильно (+1 бал). Правильні відповіді: <strong>${q.correct[0]}</strong> та <strong>${q.correct[1]}</strong></span>`;
-                            navBtn.classList.add('bg-amber-500', 'text-white', 'border-amber-500');
-                        } else {
-                            feedbackEl.innerHTML = `<span class="text-rose-700">✕ Неправильно (0 балів). Правильні відповіді: <strong>${q.correct[0]}</strong> та <strong>${q.correct[1]}</strong></span>`;
-                            navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
-                        }
+                        const uStr = `${raw1 || '—'}; ${raw2 || '—'}`;
+                        const cStr = `${q.correct[0]}; ${q.correct[1]}`;
+                        questionResults[`q${q.id}`] = pts === 2 ? `2 (${uStr})` : `${pts} (${uStr} / прав: ${cStr})`;
                     } else {
                         const input = document.querySelector(`input[name="q_${q.id}"]`);
-                        const rawVal = input.value.trim().replace(',', '.');
-                        const numVal = parseFloat(rawVal);
-
+                        const rawVal = input.value.trim();
+                        const numVal = parseFloat(rawVal.replace(',', '.'));
                         if (!isNaN(numVal) && Math.abs(numVal - q.correct) < 0.01) {
                             part3 += 2;
-                            input.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
-                            feedbackEl.innerHTML = `<span class="text-emerald-700">✓ Правильно (+2 бали)</span>`;
-                            navBtn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                            questionResults[`q${q.id}`] = `2 (${rawVal})`;
                         } else {
-                            input.classList.add('border-rose-500', 'bg-rose-50', 'text-rose-900');
-                            feedbackEl.innerHTML = `<span class="text-rose-700">✕ Неправильно (0 балів). Правильна відповідь: <strong>${q.correct}</strong></span>`;
-                            navBtn.classList.add('bg-rose-600', 'text-white', 'border-rose-600');
+                            questionResults[`q${q.id}`] = `0 (${rawVal || '—'} / прав: ${q.correct})`;
                         }
                     }
                 }
@@ -1173,6 +1195,7 @@
 
             const totalRaw = part1 + part2 + part3;
             const scaled = calculateScaledNMT(totalRaw);
+            const passedText = totalRaw >= 4 ? 'Здав' : 'Не здав';
 
             document.getElementById('raw-score').textContent = totalRaw;
             document.getElementById('nmt-scaled-score').textContent = scaled;
@@ -1188,14 +1211,55 @@
             }
 
             document.getElementById('results-modal').classList.remove('hidden');
+            sendResultsToSheet({
+                lastName: studentData.lastName,
+                firstName: studentData.firstName,
+                studentClass: studentData.studentClass,
+                variant: `Варіант ${currentVariant}`,
+                status: passedText,
+                rawScore: totalRaw,
+                nmtScore: scaled,
+                timeSpent: formatTimeSpent(60 * 60 - timeLeft),
+                ...questionResults
+            });
+        }
+
+        function formatTimeSpent(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return `${m} хв ${s} с`;
+        }
+
+        function sendResultsToSheet(payload) {
+            const syncEl = document.getElementById('sync-status');
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('ВСТАВТЕ_ВАШЕ_ПОСИЛАННЯ')) {
+                syncEl.className = 'text-xs text-center py-2 px-3 rounded-lg bg-amber-50 text-amber-800 border border-amber-200';
+                syncEl.textContent = '⚠ Таблиця ще не підключена (не вказано GOOGLE_SCRIPT_URL у коді).';
+                return;
+            }
+
+            syncEl.className = 'text-xs text-center py-2 px-3 rounded-lg bg-blue-50 text-blue-800 border border-blue-200';
+            syncEl.textContent = '⏳ Надсилання результату в Google Таблицю...';
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                syncEl.className = 'text-xs text-center py-2 px-3 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold';
+                syncEl.textContent = '✓ Результат успішно збережено в таблицю вчителя!';
+            })
+            .catch(() => {
+                syncEl.className = 'text-xs text-center py-2 px-3 rounded-lg bg-rose-50 text-rose-800 border border-rose-200';
+                syncEl.textContent = '✕ Помилка з’єднання. Зробіть скріншот результату для вчителя.';
+            });
         }
 
         document.getElementById('submit-btn').addEventListener('click', gradeTest);
         document.getElementById('finish-top-btn').addEventListener('click', gradeTest);
-        document.getElementById('review-btn').addEventListener('click', () => {
-            document.getElementById('results-modal').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+
     </script>
 </body>
 </html>
